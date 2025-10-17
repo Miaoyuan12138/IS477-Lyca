@@ -1,7 +1,7 @@
 # Project Plan
 
 ## Overview
-- The **goal** of this project is to explore the relationship between unemployment and mental health in the United States across different states and years. By integrating datasets on unemployment rates and mental health indicators, we aim to uncover how economic instability affects mental well-being and identify potential policy implications for workforce and healthcare planning.
+The **goal** of this project is to explore the relationship between unemployment and mental health in the United States across different states and years. By integrating datasets on unemployment rates and mental health indicators, we aim to uncover how economic instability affects mental well-being and identify potential policy implications for workforce and healthcare planning.
 
 ---
 
