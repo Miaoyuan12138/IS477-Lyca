@@ -62,8 +62,8 @@ List your team members (if any) and specify clear roles and responsibilities.
 | Oct 7 | Data Searching | Searching for datasets, select and describe a specific storage and organization strategy | Caroline and Lydia |
 | Oct 18 | **Project Plan** | ProjectPlan.md with datasets and structure, initial exploration and profiling of datasets | Caroline and Lydia |
 | Oct 25 | Data Acquisition | Start writing scripts to integrate and preprocess datasets | Caroline and Lydia |
-| Nov 11 | **Interim Report** | StatusReport.md + dataset integration and preprocess scripts | Caroline and Lydia |
-| Nov 20 | Workflow Automation | “Run All” pipeline | Caroline and Lydia |
+| Nov 17 | **Interim Report** | StatusReport.md + dataset integration and preprocess scripts | Caroline and Lydia |
+| Nov 23 | Workflow Automation | “Run All” pipeline | Caroline and Lydia |
 | Dec 1 | Data Quality Report | Outlier handling, missing-value fixes | Caroline and Lydia |
 | Dec 10 | **Final Submission** | README.md + full reproducible release | Caroline and Lydia |
 
