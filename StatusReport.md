@@ -72,7 +72,7 @@ During this milestone period, we have made substantial progress on nearly every 
 
 ## 6) Updated Timeline & Next Steps
 - Nov 17-18: Commit real acquisition scripts (BLS LAU and CDC/BRFSS endpoints or documented mirrors) + SHA-256 checks.
-- Nov 22: Finalize Snakemake; `run_all.sh` and `Reproduce.md` ready.
+- Nov 22: Finalize Snakemake; `run_all.sh` nad `Snakefile` ready.
 - Dec 1: Full quality report (missing/outliers; unit checks).
 - Dec 5: Analysis & visualizations; regression/correlation + uncertainty.
 - Dec 10: Final release.
