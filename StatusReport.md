@@ -8,27 +8,26 @@ During this milestone period, we have made substantial progress on nearly every 
 
 - We have successfully collected two complementary datasets from reliable public sources. 
 - The first is the BLS Local Area Unemployment (LAU) dataset, which reports monthly unemployment rates from 1976 to 2022 across all U.S. states and territories. 
-- The second is the CDC’s Behavioral Risk Factor Surveillance System (BRFSS) dataset, which measures state-level mental health indicators, including the average number of mentally unhealthy days reported by adults. 
-- These two datasets were chosen because they provide broad temporal and geographic coverage, allowing for longitudinal analysis and comparison between economic and psychological well-being trends.
-- All raw CSV files are stored locally for reproducibility and referenced consistently in our scripts. Standardized copies were created and placed under the data/raw/ directory, ensuring that each processing step can be traced back to the original sources.
+- The second is the CDC's Behavioral Risk Factor Surveillance System (BRFSS) dataset, which measures state-level mental health indicators, including the average number of mentally unhealthy days reported by adults. 
+- All raw CSV files are stored locally for reproducibility and referenced consistently in our scripts. Standardized copies were created and placed under the data/raw/ directory.
 
 ### b. Initial integration: 
 
 - Initial integration between these two datasets is completed. 
 - We first converted the BLS unemployment data from monthly to annual averages per state to align the temporal resolution with the BRFSS mental-health data, which is reported yearly. 
-- On the mental-health side, we selected an “Overall” indicator called Recent mentally unhealthy days among adults aged 18 years or older (Mean). This variable captures the average number of days in the past 30 days when individuals experienced stress, depression, or emotional problems. It is one of the most representative and continuous indicators of population mental health across states.
+- On the mental-health side, we selected an "Overall" indicator called Recent mentally unhealthy days among adults aged 18 years or older (Mean). This variable captures the average number of days in the past 30 days when individuals experienced stress, depression, or emotional problems. It is one of the most representative and continuous indicators of population mental health across states.
 - After data cleaning and standardization, both datasets were merged on common fields: State and Year. This produced a unified dataset that allows direct comparison of unemployment rates and mental-health outcomes across 51 regions (the 50 states plus the District of Columbia) for roughly eleven overlapping years (2011–2021).
 
 ### c. Profiling and quality checks:
 
-- A preliminary profiling and data-quality assessment have been conducted. 
+- Profiling and data-quality assessment have been conducted. 
 - We verified completeness, identified missing values, and checked overlaps in time and state coverage. 
 - Early profiling results indicate minimal missingness (~0.36%) in the mental-health variable and no missing values in the unemployment variable. 
 - Coverage across states and years is consistent, with 561 integrated rows after merging.
 
 ### d. Automation: 
 
-- Following the project’s reproducibility requirement, we designed a reproducible workflow. 
+- Following the project's reproducibility requirement, we designed a reproducible workflow. 
 - A Snakemake workflow skeleton and a run_all.sh script were created to automate end-to-end execution. 
 - Currently, the scripts run the integration and profiling components automatically; the data-acquisition automation will be completed in the next milestone.
 
@@ -59,10 +58,10 @@ During this milestone period, we have made substantial progress on nearly every 
 
 ## 4) Early Data Quality Notes
 - Missingness:
-  - MH_MeanUnhealthyDays: ~0.36% missing after “Overall” aggregation.
+  - MH_MeanUnhealthyDays: ~0.36% missing after "Overall" aggregation.
   - UnemploymentRate: 0.00% missing.
-  - These low missingness rates indicate good overall data quality. For future steps, we will evaluate whether the missing records cluster in particular states or years and decide whether to impute or exclude them.
-- Schema and temporal alignment: We currently join on exact state names, which work well because both datasets follow standard naming conventions. For added robustness, we may later map them to FIPS codes to avoid ambiguity. Temporal alignment was resolved by computing annual mean unemployment values, corresponding to the yearly BRFSS survey results (field YearStart).
+  - The low missingness rates indicate good overall data quality. For future steps, we will evaluate whether the missing records cluster in particular states or years and decide whether to impute or exclude them.
+- Schema and temporal alignment: We join the two datasets using state names. This works well because both datasets use standard state names. In the future, we may map them to FIPS codes to avoid ambiguity. For time alignment, we solved the issue by taking the average unemployment rate for each year. This matches the BRFSS survey data, which is also reported by year (using the YearStart field).
 - Potential bias: The BRFSS data are self-reported and survey-based, meaning responses are subject to sampling error and possible under- or over-reporting biases. To account for this, we plan to incorporate the confidence intervals provided in the dataset (LowConfidenceLimit and HighConfidenceLimit) during the analysis stage to express uncertainty around estimates.
 
 ## 5) Ethical/Legal (Module 2)
@@ -88,10 +87,10 @@ The core research question—how unemployment correlates with mental-health outc
 
 - Timeline adjustment: Because the interim deadline was moved one week later, we reorganized our schedule to better distribute workload across November. This ensures all milestones are achieved with sufficient time for peer review and testing.
 
-- Indicator refinement: After exploring the mental-health dataset, we confirmed that the “Recent mentally unhealthy days among adults aged ≥18 years” indicator offers the best temporal coverage and interpretability. We plan to use “Age-adjusted Mean” as a secondary measure for sensitivity analysis.
+- Indicator refinement: After exploring the mental-health dataset, we decided that "Recent mentally unhealthy days among adults aged ≥18 years" is the best main indicator. It has good yearly coverage and is easy to understand. We plan to use "Age-adjusted Mean" as a secondary measure for sensitivity analysis.
 
 - Integration improvement: The join keys have been standardized using consistent state names, and we will later explore mapping to FIPS codes for greater reproducibility.
 
-- Workflow evolution: Initially, we only planned manual processing; now we are transitioning to an automated workflow managed by scripts and reproducible environments. This will make our final release fully rerunnable with a single command.
+- Workflow evolution: Initially, we only planned manual processing; now we are transitioning to an automated workflow managed by scripts and reproducible environments. This will allow the whole workflow to be rerun with one command.
 
 - Expanded documentation: Additional files (requirements.txt, Reproduce.md, and quality-summary outputs) were added to enhance transparency.
