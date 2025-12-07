@@ -314,7 +314,7 @@ If this project were to be published beyond the class, we would package these me
 
 Per course requirements, we provide an archival copy of our key outputs via Box:
 
-- **Box folder (output data only)**: `https://uofi.box.com/s/xopu9k48gcrkcqshjb4qwpetobokonvc`
+- **Box folder (output data only)**: https://uofi.box.com/s/xopu9k48gcrkcqshjb4qwpetobokonvc
 - Contents:
   - `data/raw/acs_active_commute_raw.csv`
   - `data/raw/brfss_obesity_raw.csv`
