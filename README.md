@@ -316,7 +316,10 @@ Per course requirements, we provide an archival copy of our key outputs via Box:
 
 - **Box folder (output data only)**: `https://uofi.box.com/s/xopu9k48gcrkcqshjb4qwpetobokonvc`
 - Contents:
-  - `integrated_state_year.csv`
+  - `data/raw/acs_active_commute_raw.csv`
+  - `data/raw/brfss_obesity_raw.csv`
+  - `data/raw/policy_env_raw.csv`
+  - `data/processed/integrated_state_year.csv`
   - `docs/quality/missingness.csv`
   - `docs/quality/summary_by_year.csv`
   - `docs/figures/obesity_vs_active_commute.png`
