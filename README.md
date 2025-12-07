@@ -176,7 +176,7 @@ This project focuses on **descriptive** rather than causal analysis. The main fi
    - This indicates substantial growth in policy adoption and hospital accreditation over the decade.
 
 4. **Cross-sectional association between active commuting and obesity.**  
-   - In `obesity_vs_active_commute.png`, each point is a state-year. Roughly:
+   - In `docs/figures/obesity_vs_active_commute.png`, each point is a state-year. Roughly:
      - States with **higher active commuting** tend to appear at **slightly lower obesity percentages**.
      - However, there is considerable spread, and the association is modest.
 
@@ -243,11 +243,13 @@ Several extensions could deepen both the methodological and substantive contribu
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
+   
 3. **Install dependencies**
 
    ```bash
    pip install -r requirements.txt
    ```
+
 4. **Run the full pipeline**
 
    ```bash
@@ -260,6 +262,7 @@ This will:
     - Clean and integrate them into `data/processed/integrated_state_year.csv`.
     - Profile data quality and generate summary tables in `docs/quality/`.
     - Produce the exploratory scatterplot `obesity_vs_active_commute.png` in `docs/figures/`.
+
 5. **Check outputs**
     - Integrated data: `data/processed/integrated_state_year.csv`
     - Data quality reports: `docs/quality/missingness.csv`, `docs/quality/summary_by_year.csv`
