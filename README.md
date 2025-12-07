@@ -332,7 +332,6 @@ If we were turning this into a research output, the next step would be to upload
 ---
 
 ## References
-1. Centers for Disease Control and Prevention (CDC). Nutrition, Physical Activity, and Obesity – American Community Survey (ACS). https://data.cdc.gov (API ID: 8mrp-rmkw).
-2. Centers for Disease Control and Prevention (CDC). Behavioral Risk Factor Surveillance System (BRFSS) – Obesity / Weight Status. https://data.cdc.gov (API ID: hn4x-zwk7).
-3. Centers for Disease Control and Prevention (CDC). Breastfeeding – Environmental or Policy Supports (Baby-Friendly Hospital Initiative). https://data.cdc.gov (API ID: k8w5-7ju6).
-4. U.S. Department of Health & Human Services (HHS). HealthData.gov Open Data Platform.
+1. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – American Community Survey (ACS) [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-American-C/8mrp-rmkw
+2. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – Behavioral Risk Factor Surveillance System (BRFSS) [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-Behavioral/hn4x-zwk7
+3. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – Policy and Environmental Data [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-Policy-and/k8w5-7ju6
