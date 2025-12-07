@@ -314,7 +314,7 @@ If this project were to be published beyond the class, we would package these me
 
 Per course requirements, we provide an archival copy of our key outputs via Box:
 
-- **Box folder (output data only)**: `<INSERT BOX LINK HERE>`
+- **Box folder (output data only)**: `https://uofi.box.com/s/xopu9k48gcrkcqshjb4qwpetobokonvc`
 - Contents:
   - `integrated_state_year.csv`
   - `docs/quality/missingness.csv`
@@ -335,6 +335,6 @@ If we were turning this into a research output, the next step would be to upload
 ---
 
 ## References
-1. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – American Community Survey (ACS) [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-American-C
-2. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – Behavioral Risk Factor Surveillance System (BRFSS) [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-Behavioral/hn4x-zwk7
-3. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – Policy and Environmental Data [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-Policy-and/k8w5-7ju6
+1. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – American Community Survey (ACS) [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-American-C/8mrp-rmkw/about_data
+2. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – Behavioral Risk Factor Surveillance System (BRFSS) [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-Behavioral/hn4x-zwk7/about-data
+3. Centers for Disease Control and Prevention. (2016). Nutrition, Physical Activity, and Obesity – Policy and Environmental Data [Data set]. Centers for Disease Control and Prevention. https://data.cdc.gov/Nutrition-Physical-Activity-and-Obesity/Nutrition-Physical-Activity-and-Obesity-Policy-and/k8w5-7ju6/about-data
