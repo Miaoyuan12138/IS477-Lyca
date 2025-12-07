@@ -1,0 +1,49 @@
+Assuming unrestricted shared filesystem usage.
+host: bunmyouhimes-MacBook-Air.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count
+-------  -------
+all            1
+analyze        1
+total          2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Dec  7 13:43:35 2025]
+localrule analyze:
+    input: data/processed/integrated_state_year.csv
+    output: docs/figures/obesity_vs_active_commute.png
+    jobid: 4
+    reason: Missing output files: docs/figures/obesity_vs_active_commute.png
+    resources: tmpdir=/var/folders/_t/b_t71hd502gbcm45s9t5qbkr0000gn/T
+Shell command: python scripts_analyze.py --integrated data/processed/integrated_state_year.csv --out docs/figures/obesity_vs_active_commute.png
+RuleException:
+CalledProcessError in file "/Users/noir/Documents/GitHub/IS477-Lyca/Snakefile", line 83:
+Command 'set -euo pipefail;  python scripts_analyze.py --integrated data/processed/integrated_state_year.csv --out docs/figures/obesity_vs_active_commute.png' returned non-zero exit status 2.
+[Sun Dec  7 13:43:35 2025]
+Error in rule analyze:
+    message: None
+    jobid: 4
+    input: data/processed/integrated_state_year.csv
+    output: docs/figures/obesity_vs_active_commute.png
+    shell:
+        python scripts_analyze.py --integrated data/processed/integrated_state_year.csv --out docs/figures/obesity_vs_active_commute.png
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Dec  7 13:43:35 2025]
+Error in rule analyze:
+    message: None
+    jobid: 4
+    input: data/processed/integrated_state_year.csv
+    output: docs/figures/obesity_vs_active_commute.png
+    shell:
+        python scripts_analyze.py --integrated data/processed/integrated_state_year.csv --out docs/figures/obesity_vs_active_commute.png
+        (command exited with non-zero exit code)
+Complete log(s): /Users/noir/Documents/GitHub/IS477-Lyca/.snakemake/log/2025-12-07T134335.554963.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

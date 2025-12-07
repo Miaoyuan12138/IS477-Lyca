@@ -1,0 +1,50 @@
+Assuming unrestricted shared filesystem usage.
+host: bunmyouhimes-MacBook-Air.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+analyze                1
+profile_quality        1
+total                  3
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Dec  7 14:15:22 2025]
+localrule profile_quality:
+    input: data/processed/integrated_state_year.csv
+    output: docs/quality/missingness.csv, docs/quality/summary_by_year.csv
+    jobid: 3
+    reason: Missing output files: docs/quality/summary_by_year.csv, docs/quality/missingness.csv
+    resources: tmpdir=/var/folders/_t/b_t71hd502gbcm45s9t5qbkr0000gn/T
+Shell command: python scripts/scripts_profile_quality.py --integrated data/processed/integrated_state_year.csv --missing docs/quality/missingness.csv --summary docs/quality/summary_by_year.csv
+RuleException:
+CalledProcessError in file "/Users/noir/Documents/GitHub/IS477-Lyca/Snakefile", line 69:
+Command 'set -euo pipefail;  python scripts/scripts_profile_quality.py --integrated data/processed/integrated_state_year.csv --missing docs/quality/missingness.csv --summary docs/quality/summary_by_year.csv' returned non-zero exit status 1.
+[Sun Dec  7 14:15:23 2025]
+Error in rule profile_quality:
+    message: None
+    jobid: 3
+    input: data/processed/integrated_state_year.csv
+    output: docs/quality/missingness.csv, docs/quality/summary_by_year.csv
+    shell:
+        python scripts/scripts_profile_quality.py --integrated data/processed/integrated_state_year.csv --missing docs/quality/missingness.csv --summary docs/quality/summary_by_year.csv
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Dec  7 14:15:23 2025]
+Error in rule profile_quality:
+    message: None
+    jobid: 3
+    input: data/processed/integrated_state_year.csv
+    output: docs/quality/missingness.csv, docs/quality/summary_by_year.csv
+    shell:
+        python scripts/scripts_profile_quality.py --integrated data/processed/integrated_state_year.csv --missing docs/quality/missingness.csv --summary docs/quality/summary_by_year.csv
+        (command exited with non-zero exit code)
+Complete log(s): /Users/noir/Documents/GitHub/IS477-Lyca/.snakemake/log/2025-12-07T141522.699209.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

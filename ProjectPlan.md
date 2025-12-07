@@ -1,14 +1,39 @@
 # Project Plan
 
 ## Overview
-The **goal** of this project is to explore the relationship between unemployment and mental health in the United States across different states and years. By integrating datasets on unemployment rates and mental health indicators, we aim to uncover how economic instability affects mental well-being and identify potential policy implications for workforce and healthcare planning.
+The goal of this project is to explore how **adult obesity prevalence** relates to
+(1) **everyday active transportation** (walking or biking to work) and
+(2) **state-level policy and environmental supports** for nutrition and physical activity
+across U.S. states and years.
+
+We focus on three public, government-maintained datasets from the CDC’s Nutrition, Physical Activity, and Obesity (NPAO) “Data, Trends, and Maps” program:
+
+1. **Nutrition, Physical Activity, and Obesity – Behavioral Risk Factor Surveillance System (BRFSS)**  
+   – adult obesity prevalence and related behavioral risk factors. :contentReference[oaicite:0]{index=0}  
+
+2. **Nutrition, Physical Activity, and Obesity – American Community Survey (ACS)**  
+   – percent of adults who bike or walk to work. :contentReference[oaicite:1]{index=1}  
+
+3. **Nutrition, Physical Activity, and Obesity – Policy and Environmental Data**  
+   – state-level policies and environmental supports (e.g., complete streets, PE requirements, healthy food access). :contentReference[oaicite:2]{index=2}  
+
+By integrating these three sources at the **state–year** level, we will examine whether states with stronger policy environments and higher active commuting show lower obesity prevalence over time.
 
 ---
 
 ## Research Question(s)
-- How does the unemployment rate in each U.S. state correlate with mental health outcomes such as depression, anxiety, and suicide rates?
-- Are there specific states or regions where unemployment has a stronger association with mental health issues?
-- Do patterns change over time (e.g., pre- vs post-pandemic years)?
+
+**Primary Questions**
+
+1. How is active commuting (walking or biking to work) associated with adult obesity prevalence across U.S. states from 2011–2021?  
+2. Do supporting policy environments—measured by BFHI participation—align with differences in obesity trends at the state level?  
+3. To what extent does tracking physical-activity infrastructure (commuting) improve interpretation of obesity outcomes relative to policy-only models?
+
+**Secondary Questions**
+
+- Are there systematic differences across geographic regions?
+- Are there time trends that apply nationwide or only in certain states?
+- How does data quality vary across sources and years?
 
 ---
 
@@ -24,33 +49,67 @@ List your team members (if any) and specify clear roles and responsibilities.
 
 ## Datasets
 
-### Dataset 1: State Unemployment Rates (Monthly)
-- **Source:** U.S. Bureau of Labor Statistics (BLS) – https://www.bls.gov/lau/
+### Dataset 1: Nutrition, Physical Activity, and Obesity – Behavioral Risk Factor Surveillance System (BRFSS)
 
-    Compiled version available through https://www.kaggle.com/datasets/justin2028/unemployment-in-america-per-us-state  
+- **Publisher:** CDC, Division of Nutrition, Physical Activity, and Obesity (DNPAO) :contentReference[oaicite:3]{index=3}  
+- **Access:** Public data with Open Database License (ODbL) as indicated on Data.gov.  
+- **URL:** `https://catalog.data.gov/dataset/nutrition-physical-activity-and-obesity-behavioral-risk-factor-surveillance-system`
+- **URL (CSV API):** `https://data.cdc.gov/api/views/hn4x-zwk7/rows.csv?accessType=DOWNLOAD`  
+- **Format:** CSV (wide survey-derived table).  
+- **Key fields (expected):**
+  - `YearStart`, `YearEnd`
+  - `LocationAbbr`, `LocationDesc`
+  - `Class`, `Topic`, `Question`
+  - `Data_Value` (obesity %)
+  - Confidence interval fields and stratification variables
+- **Use in project:**  
+  We will extract a **state–year adult obesity prevalence** indicator (e.g., “Percent of adults aged 18 years and older who have obesity”) and aggregate to overall state–year values (no demographic stratification) to form our primary outcome variable.
 
-- **Format:** CSV  
-- **Fields:** FIPS Code, State/Area, Year, Month, Total Civilian Non-Institutional Population in State/Area, Total Civilian Labor Force in State/Area, Percent (%) of State/Area's Population, Total Employment in State/Area, Percent (%) of Labor Force Employed in State/Area, Total Unemployment in State/Area, Percent (%) of Labor Force Unemployed in State/Area
-- **License:** U.S. Government Public Domain (data produced by federal agency)
-- **Purpose:** Serves as the base measure of labor market conditions across U.S. states and months. This dataset allows us to track economic stability, employment trends, and regional disparities in job markets over time.
+---
 
-### Dataset 2: USA Mental Health Dataset (Yearly)
-- **Source:** 
+### Dataset 2: Nutrition, Physical Activity, and Obesity – American Community Survey (ACS)
 
-    - Behavioral Risk Factor Surveillance System (BRFSS) – a national health-related telephone survey system that collects data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services.
+- **Publisher:** CDC / DNPAO (derived from U.S. Census ACS). :contentReference[oaicite:4]{index=4}  
+- **Access:** Public, ODbL.  
+- **URL:** `https://catalog.data.gov/dataset/nutrition-physical-activity-and-obesity-american-community-survey`
+- **URL (CSV API):** `https://data.cdc.gov/api/views/8mrp-rmkw/rows.csv?accessType=DOWNLOAD`  
+- **Format:** CSV.  
+- **Key fields (expected):**
+  - `YearStart`, `LocationAbbr`, `LocationDesc`
+  - Indicator describing percent of adults who **bike or walk to work**
+  - `Data_Value` (percentage)
+- **Use in project:**  
+  We will derive a **state–year metric of active commuting** from this dataset to use as a key predictor (exposure) when modeling obesity.
 
-    - Pregnancy Risk Assessment Monitoring System (PRAMS) – a joint project of the CDC and state health departments collecting data on maternal attitudes and experiences before, during, and shortly after pregnancy.
+---
 
-    - Compiled version available through https://www.kaggle.com/datasets/rifkaregmi/usa-mental-health-dataset
+### Dataset 3: Nutrition, Physical Activity, and Obesity – Policy and Environmental Data
 
-- **Format:** CSV  
-- **Fields:** YearStart, YearEnd, LocationAbbr, LocationDesc, DataSource, Topic, Question, DataValueUnit, DataValueType, DataValue, DataValueAlt, DatavalueFootnote, LowConfidenceLimit, HighConfidenceLimit, StratificationCategory1, Stratification1, GeoLocation, LocationID, TopicID, QuestionID, DataValueTypeID, StratificationCategoryID1, StratificationID1
-- **License:** CDC Open Data License (U.S. Government Public Domain)
-- **Purpose:** Provides state-level indicators of population mental health, allowing examination of how social and economic variables, such as unemployment, are associated with mental health.
+- **Publisher:** CDC / DNPAO. :contentReference[oaicite:5]{index=5}  
+- **Access:** Public, ODbL.  
+- **URL:** `https://catalog.data.gov/dataset/nutrition-physical-activity-and-obesity-policy-and-environmental-data` 
+- **URL (CSV API):** `https://data.cdc.gov/api/views/k8w5-7ju6/rows.csv?accessType=DOWNLOAD` 
+- **Format:** CSV.  
+- **Key fields (expected):**
+  - `Year`, `LocationDesc`, `LocationAbbr`
+  - `Category`, `Indicator` (e.g., walkability, nutrition environments, PE policies)
+  - `Data_Value` and metadata
+- **Use in project:**  
+  We will select a small set of **policy/environment indicators** that plausibly support physical activity and healthy weight (e.g., presence of Complete Streets policies, walkability supports) and aggregate them into **state–year policy scores**.
 
 ### Integration Strategy
-- Use **State** and **Year** as the join keys.
-- **Integration Goal:** Combine both datasets to evaluate correlations between unemployment rates and mental health indicators over time and across geographic regions.
+
+- **Join keys:**  
+  - BRFSS: (`LocationDesc` → state; `YearStart` → year)  
+  - ACS: (`LocationDesc` → state; `YearStart` → year)  
+  - Policy: (`LocationDesc` → state; `Year` → year)
+- **Target integrated table:**  
+  - One row per `state`–`year` with:
+    - `obesity_pct` (BRFSS)
+    - `active_commute_pct` (ACS)
+    - Several `policy_*` indicators or a combined `policy_support_score`.
+
+We will construct this as `data/processed/integrated_state_year.csv`.
 
 ---
 
@@ -70,18 +129,19 @@ List your team members (if any) and specify clear roles and responsibilities.
 ---
 
 ## Constraints
-- Potential year mismatches between datasets.
-- Variation in definitions of mental health metrics across states.
+
+- **Schema drift:** CDC may update column names or add indicators over time; our scripts will include robust filtering but may need small manual adjustments.
+- **Indicator choice:** Each dataset contains many indicators; careful selection is needed to avoid over-complication.
+- **Survey uncertainty:** BRFSS is survey-based with confidence intervals and possible data suppression in some states/years.
 
 ---
 
 ## Gaps
-- Need to verify overlapping years between datasets.
-- Need to confirm uniformity of State naming conventions.
-- May require additional regional or demographic data for deeper analysis.
 
----
+- Need to finalize the exact BRFSS obesity indicator string and ACS active-commute indicator string based on the latest schema.
+- Need to select 1–3 policy/environment indicators that are informative but manageable for this course project.
+- Need to decide how to combine policy indicators into a single score (e.g., standardized sum) or keep them as separate predictors.
 
-*Version:* Draft v1.0  
-*Created:* [2025-10-07]  
-*Author(s):* [Caroline Wen, Lydia Li]  
+*Version:* Updated v3.0 (CDC obesity & ACS project)  
+*Created:* 2025-10-07, *Updated:* 2025-12-07  
+*Authors:* Caroline Wen, Lydia Li

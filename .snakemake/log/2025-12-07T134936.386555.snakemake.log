@@ -1,0 +1,64 @@
+Assuming unrestricted shared filesystem usage.
+host: bunmyouhimes-MacBook-Air.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+acquire_data           1
+all                    1
+analyze                1
+integrate              1
+profile_quality        1
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Dec  7 13:49:36 2025]
+localrule acquire_data:
+    output: data/raw/acs_active_commute_raw.csv, data/raw/brfss_obesity_raw.csv, data/raw/policy_env_raw.csv
+    jobid: 2
+    reason: Missing output files: data/raw/brfss_obesity_raw.csv, data/raw/acs_active_commute_raw.csv, data/raw/policy_env_raw.csv
+    resources: tmpdir=/var/folders/_t/b_t71hd502gbcm45s9t5qbkr0000gn/T
+Shell command: python scripts/scripts_acquire_data.py --outdir data/raw
+[Sun Dec  7 13:49:54 2025]
+Finished jobid: 2 (Rule: acquire_data)
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Dec  7 13:49:54 2025]
+localrule integrate:
+    input: data/raw/acs_active_commute_raw.csv, data/raw/brfss_obesity_raw.csv, data/raw/policy_env_raw.csv
+    output: data/processed/integrated_state_year.csv
+    jobid: 1
+    reason: Missing output files: data/processed/integrated_state_year.csv; Input files updated by another job: data/raw/brfss_obesity_raw.csv, data/raw/policy_env_raw.csv, data/raw/acs_active_commute_raw.csv
+    resources: tmpdir=/var/folders/_t/b_t71hd502gbcm45s9t5qbkr0000gn/T
+Shell command: python scripts/scripts_integrate.py --acs data/raw/acs_active_commute_raw.csv --brfss data/raw/brfss_obesity_raw.csv --policy data/raw/policy_env_raw.csv --out data/processed/integrated_state_year.csv
+RuleException:
+CalledProcessError in file "/Users/noir/Documents/GitHub/IS477-Lyca/Snakefile", line 53:
+Command 'set -euo pipefail;  python scripts/scripts_integrate.py --acs data/raw/acs_active_commute_raw.csv --brfss data/raw/brfss_obesity_raw.csv --policy data/raw/policy_env_raw.csv --out data/processed/integrated_state_year.csv' returned non-zero exit status 1.
+[Sun Dec  7 13:50:01 2025]
+Error in rule integrate:
+    message: None
+    jobid: 1
+    input: data/raw/acs_active_commute_raw.csv, data/raw/brfss_obesity_raw.csv, data/raw/policy_env_raw.csv
+    output: data/processed/integrated_state_year.csv
+    shell:
+        python scripts/scripts_integrate.py --acs data/raw/acs_active_commute_raw.csv --brfss data/raw/brfss_obesity_raw.csv --policy data/raw/policy_env_raw.csv --out data/processed/integrated_state_year.csv
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Dec  7 13:50:01 2025]
+Error in rule integrate:
+    message: None
+    jobid: 1
+    input: data/raw/acs_active_commute_raw.csv, data/raw/brfss_obesity_raw.csv, data/raw/policy_env_raw.csv
+    output: data/processed/integrated_state_year.csv
+    shell:
+        python scripts/scripts_integrate.py --acs data/raw/acs_active_commute_raw.csv --brfss data/raw/brfss_obesity_raw.csv --policy data/raw/policy_env_raw.csv --out data/processed/integrated_state_year.csv
+        (command exited with non-zero exit code)
+Complete log(s): /Users/noir/Documents/GitHub/IS477-Lyca/.snakemake/log/2025-12-07T134936.386555.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

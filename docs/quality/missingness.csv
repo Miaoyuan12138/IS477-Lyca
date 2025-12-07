@@ -1,5 +1,8 @@
-column,missing_pct
-State,0.0
-Year,0.0
-MH_MeanUnhealthyDays,0.36
-UnemploymentRate,0.0
+column,missing_fraction,missing_percent
+Year,0.0,0.0
+State,0.0,0.0
+active_commute_pct,0.03636363636363636,3.64
+obesity_pct,0.02727272727272727,2.73
+baby_friendly_pct,0.034545454545454546,3.45
+year,0.0,0.0
+state,0.0,0.0
