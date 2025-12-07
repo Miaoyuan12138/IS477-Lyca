@@ -267,6 +267,70 @@ This will:
 
 ---
 
+## Project Lifecycle and Workflow Mapping
+
+This project explicitly follows a data lifecycle similar to the models discussed in class:
+
+1. **Plan / Design** – We defined the research questions (commuting, obesity, and baby-friendly policy) and selected U.S. state-level CDC/HHS datasets that could be integrated on a common state–year key.
+2. **Collect / Acquire** – `scripts_acquire_data.py` programmatically downloads the three source datasets from `data.cdc.gov` into `data/raw/` with SHA-stable filenames.
+3. **Organize / Store** – We use a filesystem-based organization:
+   - `data/raw/` for original CSVs,
+   - `data/processed/` for integrated outputs, and
+   - `docs/` for quality reports and figures.
+   This aligns with the course’s emphasis on clear folder structures and naming conventions.
+4. **Integrate / Enrich / Clean** – `scripts_integrate.py` and `scripts_profile_quality.py` handle schema harmonization, aggregation, integration, and quality profiling to produce `integrated_state_year.csv`, `missingness.csv`, and `summary_by_year.csv`.
+5. **Analyze / Visualize** – `scripts_analyze.py` creates `docs/figures/obesity_vs_active_commute.png` to support exploratory analysis of the relationship between active commuting and obesity.
+6. **Automate / Preserve / Share** – The `Snakefile` and `run_all.sh` script automate the end-to-end workflow, while this `README.md` plus a data dictionary (see below) document how others can reproduce and reuse the work.
+
+By making each lifecycle stage explicit and script-driven, we support both **reproducibility** and **transparency**, as required by the course.
+
+---
+
+## Metadata and Data Documentation
+
+To support reuse and understandability, we provide lightweight but explicit metadata:
+
+- **Data dictionary** – A separate file `docs/data_dictionary.md` lists:
+  - Each column in `integrated_state_year.csv`,
+  - Its description, type (numeric/categorical),
+  - Source dataset and any transformation applied (e.g., aggregation, renaming).
+- **Provenance metadata** – The combination of:
+  - `scripts_acquire_data.py`,
+  - `scripts_integrate.py`,
+  - `scripts_profile_quality.py`,
+  - `Snakefile`,
+  - and this `README.md`
+  captures the provenance chain from original CDC/HHS APIs to final integrated outputs.
+- **Licensing metadata** – We treat all derived data and code as open for educational and research use. Dataset licenses and terms of use are inherited from the original CDC/HHS sources, which are U.S. Government open data.
+
+If this project were to be published beyond the class, we would package these metadata in a standard format such as **DataCite** or **Schema.org/Dataset** and register the archive with a DOI-issuing repository (e.g., Zenodo).
+
+---
+
+## Data Archival, FAIRness, and Box Folder
+
+Per course requirements, we provide an archival copy of our key outputs via Box:
+
+- **Box folder (output data only)**: `<INSERT BOX LINK HERE>`
+- Contents:
+  - `integrated_state_year.csv`
+  - `docs/quality/missingness.csv`
+  - `docs/quality/summary_by_year.csv`
+  - `docs/figures/obesity_vs_active_commute.png`
+- After downloading, these files should be placed into the corresponding folders under the project root (e.g., `data/processed/`, `docs/quality/`, `docs/figures/`). Paths are documented in this README and in the Box folder description.
+- The Box paths are added to `.gitignore` so large data files are **not** pushed to GitHub, consistent with good repository hygiene.
+
+In terms of **FAIR** principles:
+
+- **Findable** – The GitHub repository and Box folder provide stable URLs and descriptive metadata.
+- **Accessible** – All source data are retrievable via public CDC/HHS APIs; processed outputs are available from Box.
+- **Interoperable** – Data are stored as CSV with clear, documented column names and types.
+- **Reusable** – Licensing (U.S. Government public data) and transformation steps are documented so others can reuse or extend the integrated dataset.
+
+If we were turning this into a research output, the next step would be to upload a frozen version of the repository plus key data artifacts to an archival repository such as Zenodo and obtain a DOI.
+
+---
+
 ## References
 1. Centers for Disease Control and Prevention (CDC). Nutrition, Physical Activity, and Obesity – American Community Survey (ACS). https://data.cdc.gov (API ID: 8mrp-rmkw).
 2. Centers for Disease Control and Prevention (CDC). Behavioral Risk Factor Surveillance System (BRFSS) – Obesity / Weight Status. https://data.cdc.gov (API ID: hn4x-zwk7).
