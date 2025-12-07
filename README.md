@@ -104,7 +104,7 @@ The final integrated file, `data/processed/integrated_state_year.csv`, has one r
 
 ### Temporal and Spatial Coverage
 
-From `summary_by_year.csv`:
+From `docs/quality/summary_by_year.csv`:
 
 - Years represented: **2011–2019 and 2021** (no 2020 row appears in the current integrated output).
 - For each year in this range:
@@ -153,7 +153,7 @@ Key transformations in `scripts_integrate.py` include:
    - For ACS and BRFSS, aggregate or select state-level rows so that the final integrated table has **one record per state-year**.
 
 4. **Merging**
-   - Merge the three cleaned tables on `(state, year)` to produce `integrated_state_year.csv`.
+   - Merge the three cleaned tables on `(state, year)` to produce `data/processed/integrated_state_year.csv`.
 
 These steps are fully scripted and therefore reproducible.
 
@@ -165,7 +165,7 @@ This project focuses on **descriptive** rather than causal analysis. The main fi
 
 1. **Obesity rates are rising over time.**  
    - The average state-level obesity percentage increases from around **27–28% in 2011** to over **33% by 2021**.
-   - This pattern is visible both in `summary_by_year.csv` and in `obesity_vs_active_commute.png`, where later years cluster at higher obesity levels.
+   - This pattern is visible both in `docs/quality/summary_by_year.csv` and in `docs/figures/obesity_vs_active_commute.png`, where later years cluster at higher obesity levels.
 
 2. **Active commuting is relatively rare and slowly declining.**  
    - ACS data show that only about **3–4%** of adults walk or bike to work on average across states.
